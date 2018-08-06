@@ -2,23 +2,23 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-class Counter extends Component {
+class counter extends Component {
   /* Can use this method for binding this or arrow functions
   constructor(props) {
     super(props);
-    // bind method - returns a new instance of the handleIncrement function where this is always referencing the counter obj
+    // bind method - returns a new instance of the handleIncrement function where this is always referencing the valueer obj
     this.handleIncrement = this.handleIncrement.bind(this);
   }
 
    handleIncrement() {
-    console.log(this.state.count + 1);
+    console.log(this.state.value + 1);
   }
 
   */
 
   // state is a special property that includes any data that this component needs
   state = {
-    count: 0,
+    value: this.props.value,
     tags: []
   };
 
@@ -32,8 +32,9 @@ class Counter extends Component {
     return (
       // use React.Fragment if you dont want to show a wrapping div
       <div>
+        {this.props.children}
         <span style={this.styles} className={this.getBadgeClasses()}>
-          {this.formatCount()}
+          {this.formatvalue()}
         </span>
         <button
           onClick={() => this.handleIncrement({ id: 1 })}
@@ -48,7 +49,7 @@ class Counter extends Component {
 
   handleIncrement = product => {
     console.log(product);
-    this.setState({ count: ++this.state.count });
+    this.setState({ value: ++this.state.value });
   };
 
   renderTags() {
@@ -58,16 +59,16 @@ class Counter extends Component {
     return <p>There are no tags</p>;
   }
 
-  formatCount() {
-    const { count } = this.state;
-    return count ? count : "Zero";
+  formatvalue() {
+    const { value } = this.state;
+    return value ? value : "Zero";
   }
 
   getBadgeClasses() {
-    return this.state.count
+    return this.state.value
       ? "badge badge-primary m-2"
       : "badge badge-warning m-2";
   }
 }
 
-export default Counter;
+export default counter;

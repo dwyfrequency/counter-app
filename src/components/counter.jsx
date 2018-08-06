@@ -28,6 +28,7 @@ class Counter extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       // use React.Fragment if you dont want to show a wrapping div
       <div>

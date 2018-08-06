@@ -13,7 +13,13 @@ class counters extends Component {
   };
 
   render() {
-    return <div>{this.state.counters.map(i => <Counter key={i.id} />)}</div>;
+    return (
+      <div>
+        {this.state.counters.map(i => (
+          <Counter key={i.id} value={i.value} selected={true} />
+        ))}
+      </div>
+    );
   }
 }
 

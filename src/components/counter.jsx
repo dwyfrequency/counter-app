@@ -3,6 +3,19 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 class Counter extends Component {
+  /* Can use this method for binding this or arrow functions
+  constructor(props) {
+    super(props);
+    // bind method - returns a new instance of the handleIncrement function where this is always referencing the counter obj
+    this.handleIncrement = this.handleIncrement.bind(this);
+  }
+
+   handleIncrement() {
+    console.log(this.state.count + 1);
+  }
+
+  */
+
   // state is a special property that includes any data that this component needs
   state = {
     count: 1,
@@ -23,10 +36,26 @@ class Counter extends Component {
         <span style={this.styles} className={classes}>
           {this.formatCount()}
         </span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        <ul>{this.state.tags.map(i => <li key={i}>{i}</li>)}</ul>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
+        <ul>{this.renderTags()}</ul>
       </React.Fragment>
     );
+  }
+
+  handleIncrement = () => {
+    console.log(this.state.count + 1);
+  };
+
+  renderTags() {
+    if (this.state.tags.length) {
+      return this.state.tags.map(i => <li key={i}>{i}</li>);
+    }
+    return <p>There are no tags</p>;
   }
 
   formatCount() {

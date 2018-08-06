@@ -34,7 +34,6 @@ class counters extends Component {
   }
 
   handleIncrement = counter => {
-    // make a copy of the counter passed in, so we are not modifying the state b/c objs passed by reference
     const cnt = { ...counter };
     const counters = this.state.counters.reduce((accum, c) => {
       if (cnt.id === c.id) {

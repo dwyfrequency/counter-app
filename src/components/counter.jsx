@@ -18,7 +18,7 @@ class Counter extends Component {
 
   // state is a special property that includes any data that this component needs
   state = {
-    count: 1,
+    count: 0,
     tags: ["tag1", "tag2", "tag3"]
   };
 
@@ -28,16 +28,14 @@ class Counter extends Component {
   };
 
   render() {
-    const classes = this.getBadgeClasses();
-
     return (
       // use React.Fragment if you dont want to show a wrapping div
       <React.Fragment>
-        <span style={this.styles} className={classes}>
+        <span style={this.styles} className={this.getBadgeClasses()}>
           {this.formatCount()}
         </span>
         <button
-          onClick={this.handleIncrement}
+          onClick={() => this.handleIncrement({ id: 1 })}
           className="btn btn-secondary btn-sm"
         >
           Increment
@@ -47,8 +45,9 @@ class Counter extends Component {
     );
   }
 
-  handleIncrement = () => {
-    console.log(this.state.count + 1);
+  handleIncrement = product => {
+    console.log(product);
+    this.setState({ count: ++this.state.count });
   };
 
   renderTags() {

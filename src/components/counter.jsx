@@ -19,7 +19,7 @@ class Counter extends Component {
   // state is a special property that includes any data that this component needs
   state = {
     count: 0,
-    tags: ["tag1", "tag2", "tag3"]
+    tags: []
   };
 
   styles = {
@@ -30,7 +30,7 @@ class Counter extends Component {
   render() {
     return (
       // use React.Fragment if you dont want to show a wrapping div
-      <React.Fragment>
+      <div>
         <span style={this.styles} className={this.getBadgeClasses()}>
           {this.formatCount()}
         </span>
@@ -40,8 +40,8 @@ class Counter extends Component {
         >
           Increment
         </button>
-        <ul>{this.renderTags()}</ul>
-      </React.Fragment>
+        {/* <ul>{this.renderTags()}</ul> */}
+      </div>
     );
   }
 

@@ -34,10 +34,12 @@ class counters extends Component {
   }
 
   handleIncrement = counter => {
-    console.log(counter);
+    // make a copy of the counter passed in, so we are not modifying the state b/c objs passed by reference
+    const cnt = { ...counter };
     const counters = this.state.counters.reduce((accum, c) => {
-      if (counter.id === c.id) {
-        counter.value += 1;
+      if (cnt.id === c.id) {
+        cnt.value += 1;
+        return accum.concat(cnt);
       }
       return accum.concat(c);
     }, []);

@@ -26,11 +26,23 @@ class counters extends Component {
             key={counter.id}
             counter={counter}
             onDelete={this.handleDelete}
+            onIncrement={this.handleIncrement}
           />
         ))}
       </div>
     );
   }
+
+  handleIncrement = counter => {
+    console.log(counter);
+    const counters = this.state.counters.reduce((accum, c) => {
+      if (counter.id === c.id) {
+        counter.value += 1;
+      }
+      return accum.concat(c);
+    }, []);
+    this.setState({ counters });
+  };
 
   handleReset = () => {
     const counters = this.state.counters.map(c => {

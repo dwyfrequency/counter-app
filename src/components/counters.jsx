@@ -15,14 +15,35 @@ class counters extends Component {
   render() {
     return (
       <div>
+        <button
+          onClick={this.handleReset}
+          className="btn btn-primary btn-md m-2"
+        >
+          Reset
+        </button>
         {this.state.counters.map(counter => (
-          <Counter key={counter.id} value={counter.value}>
-            <h4>Counter #{counter.id}</h4>
-          </Counter>
+          <Counter
+            key={counter.id}
+            counter={counter}
+            onDelete={this.handleDelete}
+          />
         ))}
       </div>
     );
   }
+
+  handleReset = () => {
+    const counters = this.state.counters.map(c => {
+      c.value = 0;
+      return c;
+    });
+    this.setState(counters);
+  };
+
+  handleDelete = id => {
+    const counters = this.state.counters.filter(i => i.id !== id);
+    this.setState({ counters });
+  };
 }
 
 export default counters;

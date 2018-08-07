@@ -29,6 +29,7 @@ class counter extends Component {
   };
 
   render() {
+    const { onIncrement, onDelete } = this.props;
     return (
       // use React.Fragment if you dont want to show a wrapping div
       <div>
@@ -36,13 +37,13 @@ class counter extends Component {
           {this.formatvalue()}
         </span>
         <button
-          onClick={() => this.props.onIncrement(this.props.counter)}
+          onClick={() => onIncrement(this.props.counter)}
           className="btn btn-secondary btn-sm"
         >
           Increment
         </button>
         <button
-          onClick={() => this.props.onDelete(this.props.counter.id)}
+          onClick={() => onDelete(this.props.counter.id)}
           className="btn btn-danger btn-sm m-2"
         >
           Delete

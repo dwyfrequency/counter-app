@@ -55,12 +55,20 @@ class counter extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     // is invoked immediately after updating occurs. This method is not called for the initial render. Good for comparing old props with new props
+    /*
     console.log("Prev Props", prevProps);
     console.log("Prev State", prevState);
     if (prevProps.counter.value !== this.props.counter.value) {
       // good place to make an ajax call
       console.log("previous counter differs from the current");
     }
+    */
+  }
+
+  componentWillUnmount() {
+    // is invoked immediately before a component is unmounted and destroyed.
+    // when we delete a counter, our entire component tree is rerendered. Before the counter is officially removed from the dom, react will fire this componentWillUnmount method
+    console.log("Counter - Unmount");
   }
 
   formatvalue() {

@@ -67,7 +67,7 @@ class counter extends Component {
 
   componentWillUnmount() {
     // is invoked immediately before a component is unmounted and destroyed.
-    // when we delete a counter, our entire component tree is rerendered. Before the counter is officially removed from the dom, react will fire this componentWillUnmount method
+    // when we delete a counter, our entire component tree is rerendered. Before the counter is officially removed from the dom, react will fire this componentWillUnmount method. Gives us an opp to cleanup timers and listens so we dont have memory leaks
     console.log("Counter - Unmount");
   }
 

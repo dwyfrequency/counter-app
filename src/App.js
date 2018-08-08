@@ -26,8 +26,8 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    // this method is called after our component is rendered to the dom - perfect place to make an Ajax Call to the server
-    console.log("App - Mounted");
+    // Ajax Call
+    console.log;
   };
 
   handleIncrement = counter => {
@@ -56,8 +56,6 @@ class App extends Component {
   };
 
   render() {
-    console.log("App - Rendered");
-
     return (
       <React.Fragment>
         <NavBar

@@ -4,6 +4,13 @@ import NavBar from "./components/navbar";
 import Counters from "./components/counters";
 
 class App extends Component {
+  /* If you need to use props from a parent and you are defining a constructor, you must pass it in to the constructor and pass it to the super func
+  constructor(props) {
+    super(props);
+    console.log("App - Constructor");
+  }
+  */
+
   state = {
     counters: [
       { id: 1, value: 4 },
@@ -13,23 +20,15 @@ class App extends Component {
     ]
   };
 
-  render() {
-    return (
-      <React.Fragment>
-        <NavBar
-          totalCount={this.state.counters.filter(c => c.value > 0).length}
-        />
-        <main className="container">
-          <Counters
-            counters={this.state.counters}
-            onDelete={this.handleDelete}
-            onIncrement={this.handleIncrement}
-            onReset={this.handleReset}
-          />
-        </main>
-      </React.Fragment>
-    );
+  constructor() {
+    super();
+    console.log("App - Constructor");
   }
+
+  componentDidMount = () => {
+    // this method is called after our component is rendered to the dom - perfect place to make an Ajax Call to the server
+    console.log("App - Mounted");
+  };
 
   handleIncrement = counter => {
     const cnt = { ...counter };
@@ -55,6 +54,26 @@ class App extends Component {
     const counters = this.state.counters.filter(i => i.id !== id);
     this.setState({ counters });
   };
+
+  render() {
+    console.log("App - Rendered");
+
+    return (
+      <React.Fragment>
+        <NavBar
+          totalCount={this.state.counters.filter(c => c.value > 0).length}
+        />
+        <main className="container">
+          <Counters
+            counters={this.state.counters}
+            onDelete={this.handleDelete}
+            onIncrement={this.handleIncrement}
+            onReset={this.handleReset}
+          />
+        </main>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;

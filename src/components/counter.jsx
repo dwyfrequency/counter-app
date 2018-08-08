@@ -29,6 +29,7 @@ class counter extends Component {
   };
 
   render() {
+    console.log("Counter - Rendered");
     const { onIncrement, onDelete } = this.props;
     return (
       // use React.Fragment if you dont want to show a wrapping div
@@ -50,6 +51,16 @@ class counter extends Component {
         </button>
       </div>
     );
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // is invoked immediately after updating occurs. This method is not called for the initial render. Good for comparing old props with new props
+    console.log("Prev Props", prevProps);
+    console.log("Prev State", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      // good place to make an ajax call
+      console.log("previous counter differs from the current");
+    }
   }
 
   formatvalue() {
